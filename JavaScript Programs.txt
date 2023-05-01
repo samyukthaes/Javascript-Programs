@@ -1,0 +1,218 @@
+Q> Anagram program without using sort function
+
+let s1 = prompt();
+let s2 = prompt();
+let flag = 0;
+let alpcount = new Array(26).fill(0);
+for(let i=0;i<s1.length;i++){
+    let ch = s1.charAt(i);
+    alpcount[ch.charCodeAt(0)-'a'.charCodeAt(0)]++;
+}
+for(let i=0;i<s2.length;i++){
+    let ch = s2.charAt(i);
+    alpcount[ch.charCodeAt(0)-'a'.charCodeAt(0)]--;
+}
+for(let i=0;i<alpcount.length;i++){
+    if(alpcount[i]==0){
+        flag = 0;
+    }
+    else{
+        flag = 1;
+        break;
+    }
+}
+if(flag==0){
+    console.log("anagram");
+}
+else{
+    console.log("not anagram");
+}
+
+============================================================================================================================
+
+
+Q> Prime no's in the given list using Javascript
+
+
+const arr = [2, 4, 7, 9, 11, 13, 17, 19, 20, 23];
+let prime = [];
+let count = 0;
+for(let i=0;i<arr.length;i++){
+    for(let j=1;j<=arr[i];j++){
+        if(arr[i]%j==0){
+            count++;
+        }
+    }
+    if(count==2){
+        prime.push(arr[i]);
+    }
+    count = 0;
+}
+console.log(prime);
+
+
+============================================================================================================================
+Q> Anagram program using sort function
+
+
+let s1 = prompt();
+let s2 = prompt();
+let s3 = s1.split("").sort().join("");
+let s4 = s2.split("").sort().join("");
+if(s3==s4){
+    console.log("anagram");
+}
+else{
+    console.log("not anagram");
+}
+------------------------------------------------------------------------------------------------------------------------
+Q> Fibanocci series
+
+const num = prompt();
+let fib = [];
+let n1=0,n2=1;
+for(let i=0;i<2;i++){
+    if(i==0){
+        fib.push(0);
+    }
+    if(i==1){
+        fib.push(1);
+    }
+}
+for(let i=2;i<num;i++){
+    let sum = n1+n2;
+    fib.push(sum);
+    n1 = n2;
+    n2 = sum;
+}
+console.log(fib);
+
+--------------------------------------------------------------------------------------------------------------------
+Q> Using inheritence concepts in javascript,create a person basic information in the parent class.Child class should be a student,employee and father.
+
+
+
+class Person {
+  constructor(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
+
+  introduce() {
+    console.log(`Hi, my name is ${this.name}, I am ${this.age} years old, and I identify as ${this.gender}.`);
+  }
+}
+
+class Student extends Person {
+  constructor(name, age, gender, grade) {
+    super(name, age, gender);
+    this.grade = grade;
+  }
+
+  study() {
+    console.log(`${this.name} is studying hard to get good grades.`);
+  }
+}
+
+class Employee extends Person {
+  constructor(name, age, gender, jobTitle) {
+    super(name, age, gender);
+    this.jobTitle = jobTitle;
+  }
+
+  work() {
+    console.log(`${this.name} is working hard as a ${this.jobTitle}.`);
+  }
+}
+
+class Father extends Person {
+  constructor(name, age, gender, children) {
+    super(name, age, gender);
+    this.children = children;
+  }
+
+  parent() {
+    console.log(`${this.name} is the proud father of ${this.children}.`);
+  }
+}
+
+----------------------------------------------------------------------------------------------------------------
+Q> Javascript program to convert roman numbers to numbers
+
+
+const roman = {
+    "I":1,
+    "V":5,
+    "X": 10,
+    "L": 50,
+    "C": 100,
+    "D": 500,
+    "M": 1000
+}
+
+let val = prompt();
+let result = 0;
+let valsplit = val.split("");
+for(let i=0;i<val.length;i++){
+    let current = roman[valsplit[i]];
+    let next = roman[valsplit[i+1]];
+    if(next>current){
+        let sub = next-current;
+        result+=sub;
+        break;
+    }
+    else{
+        result+=current;
+    }
+}
+console.log(result);
+
+
+---------------------------------------------------------------------------------------------------------------
+Q> Write a javascript function to find the pair of numbers in the list equals to the target number
+
+
+function findSumPairs(arr, target) {
+  let pairs = [];
+
+  // Loop through each element in the array
+  for (let i = 0; i < arr.length; i++) {
+    // Loop through each element after the current element
+    for (let j = i + 1; j < arr.length; j++) {
+      // Check if the sum of the two elements is equal to the target
+      if (arr[i] + arr[j] === target) {
+        pairs.push([arr[i], arr[j]]);
+      }
+    }
+  }
+
+  // Return the array of pairs
+  return pairs;
+}
+
+// Example usage
+const numbers = [1, 2, 3, 4, 5, 6];
+const target = 7;
+
+const pairs = findSumPairs(numbers, target);
+console.log(pairs); // Output: [[1, 6], [2, 5], [3, 4]]
+
+-------------------------------------------------------------------------------------------------------------------------
+Q> write a function to reverse a string and give some proper exception if the user is giving another languages
+
+
+function reverseString(string) {
+    if (!/^[a-zA-Z\s]+$/.test(string)) {
+        return "This function only supports English language";
+    }
+    else{
+       return string.split("").reverse().join(""); 
+    }
+  
+}
+let n= prompt("Enter string: ");
+let x=reverseString(n);
+console.log(x);
+  
+  ----------------------------------------------------------------------------------------------------------
